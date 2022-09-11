@@ -8,7 +8,7 @@ export default function ForgetPasswordPage() {
         <div className="text-center m-5-auto">
             <h2>Reset your password</h2>
             <h5>Enter your email address and we will send you a new password</h5>
-            <form action="/login">
+            <form action="/login" >
                 <p>
                     <label id="reset_pass_lbl">Email address</label><br/>
                     <input type="email" name="email" required />
