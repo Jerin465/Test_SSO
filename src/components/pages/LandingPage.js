@@ -24,7 +24,7 @@ export default function LandingPage() {
     const initClient = () => {
       gapi.client.init({
       clientId: clientId,
-      accessType: 'Testing',
+      scope: '',
     });
  };
  gapi.load('client:auth2', initClient);
@@ -50,7 +50,7 @@ export default function LandingPage() {
     onFailure,
     clientId,
     isSignedIn: true,
-    accessType: 'Testing',
+    accessType: 'offline',
     cookiePolicy:'single_host_origin'
   });
 
