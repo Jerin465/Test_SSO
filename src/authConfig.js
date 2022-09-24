@@ -19,3 +19,10 @@ export const loginRequest = {
    export const graphConfig = {
        graphMeEndpoint: "https://graph.microsoft.com"
    };
+
+
+export const googleConfig = {
+    auth: {
+        clientId: "709830089411-10a55lbj8vcaj06rbafv41k7bmr5n40n.apps.googleusercontent.com",
+    }
+  };

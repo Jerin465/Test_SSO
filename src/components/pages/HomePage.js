@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link,useNavigate } from 'react-router-dom'
-import { loginRequest } from "../../authConfig";
+import { loginRequest,googleConfig } from "../../authConfig";
 import { useMsal, useAccount } from "@azure/msal-react";
 import { useGoogleLogout } from 'react-google-login';
 
 
-const clientId = '901956690950-frn68etjfaku5obb53ls55koo18d07ei.apps.googleusercontent.com';
+const clientId = googleConfig.auth.clientId;
 
 export default function HomePage() {
     const { instance, accounts, inProgress } = useMsal();

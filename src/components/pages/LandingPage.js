@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { loginRequest } from "../../authConfig";
+import { loginRequest,googleConfig } from "../../authConfig";
 // import { useMsal } from "@azure/msal-react";
 import { useMsal, useAccount } from "@azure/msal-react";
 import { data } from "../../config";
@@ -13,7 +13,7 @@ import { gapi } from 'gapi-script';
 
 export default function LandingPage() {
   // const { instance } = useMsal();
-  const clientId = '901956690950-frn68etjfaku5obb53ls55koo18d07ei.apps.googleusercontent.com';
+  const clientId = googleConfig.auth.clientId;
   const { instance, accounts, inProgress } = useMsal();
   const account = useAccount(accounts[0] || {});
   const navigate = useNavigate();
