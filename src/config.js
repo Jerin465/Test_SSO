@@ -6,6 +6,7 @@ export const data = [
     username: "aneesh@octosignals.com",
   },
   {
-    username: "creativeslocal@gmail.com",
-  }
+    username: "jerin465@gmail.com",
+  },
+  
 ];

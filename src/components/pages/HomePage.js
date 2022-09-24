@@ -2,6 +2,10 @@ import React from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import { loginRequest } from "../../authConfig";
 import { useMsal, useAccount } from "@azure/msal-react";
+import { useGoogleLogout } from 'react-google-login';
+
+
+const clientId = '901956690950-frn68etjfaku5obb53ls55koo18d07ei.apps.googleusercontent.com';
 
 export default function HomePage() {
     const { instance, accounts, inProgress } = useMsal();
@@ -11,12 +15,17 @@ export default function HomePage() {
             console.error(e);
         });
     }
+
+    const { signOut } = useGoogleLogout({
+        clientId
+      });
+    
     return (
         <div className="text-center">
             <h1 className="main-title home-page-title">welcome to our app</h1>
             <h3 className="home-page-title">Successfully logged In</h3>
             <Link to="/">
-                <button className="primary-button" onClick={handleLogout}>Log out</button>
+                <button className="primary-button" onClick={signOut}>Log out</button>
             </Link>
         </div>
     )
