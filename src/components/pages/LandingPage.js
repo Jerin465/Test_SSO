@@ -8,6 +8,8 @@ import "../../App.css";
 import BackgroundImage from "../../assets/images/bg.png";
 import { useGoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
+import { callMsGraph } from "../../Service/graph";
+
 
 
 
@@ -31,13 +33,14 @@ export default function LandingPage() {
   }
 
   const onSuccess = (res) => {
-    console.log('Login Success: currentUser:', res);
     if (res) {
       data.map((_x) => {
         if (res.profileObj.email == _x.username) navigate("/home");
       });
-      // callMsGraph(response.accessToken).then((result) => {
-      // });
+      callMsGraph(res.accessToken).then((result) => {
+    console.log('Login Success: currentUser:', result);
+
+      });
     }
   };
 
@@ -67,8 +70,10 @@ export default function LandingPage() {
             data.map((_x) => {
               if (response.account.username == _x.username) navigate("/home");
             });
-            // callMsGraph(response.accessToken).then((result) => {
-            // });
+            callMsGraph(response.accessToken).then((result) => {
+              localStorage.setItem('userData',JSON.stringify(result))
+              console.log(result);
+            });
           }
         });
     }

@@ -10,9 +10,11 @@ const clientId = googleConfig.auth.clientId;
 export default function HomePage() {
     const { instance, accounts, inProgress } = useMsal();
     const navigate = useNavigate();
+    const userData =JSON.parse(localStorage.getItem('userData'));
     function handleLogout() {
         instance.logoutPopup().then(resp => navigate("/")).catch(e => {
             console.error(e);
+            localStorage.clear();
         });
     }
 
@@ -22,10 +24,10 @@ export default function HomePage() {
     
     return (
         <div className="text-center">
-            <h1 className="main-title home-page-title">welcome to our app</h1>
+            <h1 className="main-title home-page-title">welcome {userData.displayName}</h1>
             <h3 className="home-page-title">Successfully logged In</h3>
             <Link to="/">
-                <button className="primary-button" onClick={signOut}>Log out</button>
+                <button className="primary-button" onClick={handleLogout}>Log out</button>
             </Link>
         </div>
     )

@@ -4,5 +4,8 @@ export const data = [
   },
   {
     username: "aneesh@octosignals.com",
+  },
+  {
+    username: "info@radicalinfotech.com",
   }
 ];
