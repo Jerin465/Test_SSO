@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { loginRequest,googleConfig } from "../../authConfig";
+import { loginRequest, googleConfig } from "../../authConfig";
 // import { useMsal } from "@azure/msal-react";
 import { useMsal, useAccount } from "@azure/msal-react";
 import { data } from "../../config";
@@ -25,36 +25,44 @@ export default function LandingPage() {
     });
     const initClient = () => {
       gapi.client.init({
-      clientId: clientId,
-      scope: '',
-    });
- };
- gapi.load('client:auth2', initClient);
+        clientId: clientId,
+        scope: '',
+      });
+    };
+    gapi.load('client:auth2', initClient);
   }
 
-  const onSuccess = (res) => {
-    if (res) {
-      data.map((_x) => {
-        if (res.profileObj.email == _x.username) navigate("/home");
-      });
-      callMsGraph(res.accessToken).then((result) => {
-    console.log('Login Success: currentUser:', result);
+  // const onSuccess = (res) => {
+  //   if (res) {
+  //     data.map((_x) => {
+  //       if (res.profileObj.email == _x.username) {
+  //         console.log(_x.userType);
+  //         if (_x.userType == 1) {
+  //           navigate("/admin")
+  //         }
+  //         if (_x.userType == 2) {
+  //           navigate("/home")
+  //         }
+  //       };
+  //     });
+  //     callMsGraph(res.accessToken).then((result) => {
+  //       console.log('Login Success: currentUser:', result);
 
-      });
-    }
-  };
+  //     });
+  //   }
+  // };
 
   const onFailure = (res) => {
     console.log('Login failed: res:', res);
   };
 
   const { signIn } = useGoogleLogin({
-    onSuccess,
+    // onSuccess,
     onFailure,
     clientId,
     isSignedIn: true,
     accessType: 'offline',
-    cookiePolicy:'single_host_origin'
+    cookiePolicy: 'single_host_origin'
   });
 
 
@@ -67,12 +75,20 @@ export default function LandingPage() {
         })
         .then((response) => {
           if (response) {
+            console.log(response);
+
             data.map((_x) => {
-              if (response.account.username == _x.username) navigate("/home");
+              if (response.account.username == _x.username) {
+                if (_x.userType == 2) {
+                  navigate("/home")
+                }
+                if (_x.userType == 2) {
+                  navigate("/admin")
+                }
+              };
             });
             callMsGraph(response.accessToken).then((result) => {
-              localStorage.setItem('userData',JSON.stringify(result))
-              console.log(result);
+              localStorage.setItem('userData', JSON.stringify(result))
             });
           }
         });

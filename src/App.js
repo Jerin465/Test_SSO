@@ -6,6 +6,8 @@ import LoginPage from './components/pages/LoginPage'
 import RegisterPage from './components/pages/RegisterPage'
 import ForgetPasswordPage from './components/pages/ForgetPasswordPage'
 import HomePage from './components/pages/HomePage'
+import AdminPage from './components/pages/AdminPage'
+
 import { useMsal, useAccount } from "@azure/msal-react";
 // import { useHistory } from 'react-router-dom'
 import {data} from'./config'
@@ -26,6 +28,8 @@ export default function App() {
                     <Route path="/register" element={ <RegisterPage/> } />
                     <Route path="/forget-password" element={ <ForgetPasswordPage /> } />
                     <Route path="/home" element={ <HomePage /> } />
+                    <Route path="/admin" element={ <AdminPage /> } />
+
                 </Routes>
                 <Footer />
             </div>

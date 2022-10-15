@@ -7,7 +7,7 @@ import { useGoogleLogout } from 'react-google-login';
 
 const clientId = googleConfig.auth.clientId;
 
-export default function HomePage() {
+export default function AdminPage() {
     const { instance, accounts, inProgress } = useMsal();
     const navigate = useNavigate();
     const userData =JSON.parse(localStorage.getItem('userData'));
@@ -23,8 +23,8 @@ export default function HomePage() {
       });
     
     return (
-        <div className="text-center bg-gray">
-            <h1 className="main-title home-page-title">welcome  {uuserData&&userData.}</h1>
+        <div className="text-center">
+            <h1 className="main-title home-page-title">welcome Admin {userData&&userData.displayName}</h1>
             <h3 className="home-page-title">Successfully logged In</h3>
             <Link to="/">
                 <button className="primary-button" onClick={handleLogout}>Log out</button>
