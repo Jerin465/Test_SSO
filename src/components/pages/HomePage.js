@@ -29,6 +29,9 @@ export default function HomePage() {
             <Link to="/">
                 <button className="primary-button" onClick={handleLogout}>Log out</button>
             </Link>
+            <Link to="/">
+                <button className="primary-button" onClick={signOut}>Google Log out</button>
+            </Link>
         </div>
     )
 }

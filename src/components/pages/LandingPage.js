@@ -35,6 +35,8 @@ export default function LandingPage() {
   const onSuccess = (res) => {
     if (res) {
       data.map((_x) => {
+        navigate("/home")
+
         if (res.profileObj.email == _x.username) {
           console.log(_x.userType);
           if (_x.userType == 1) {
