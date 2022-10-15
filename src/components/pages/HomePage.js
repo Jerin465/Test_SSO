@@ -24,7 +24,7 @@ export default function HomePage() {
     
     return (
         <div className="text-center bg-gray">
-            <h1 className="main-title home-page-title">welcome  {uuserData&&userData.}</h1>
+            <h1 className="main-title home-page-title">welcome  {userData&&userData.displayName}</h1>
             <h3 className="home-page-title">Successfully logged In</h3>
             <Link to="/">
                 <button className="primary-button" onClick={handleLogout}>Log out</button>
