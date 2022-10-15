@@ -32,32 +32,32 @@ export default function LandingPage() {
     gapi.load('client:auth2', initClient);
   }
 
-  // const onSuccess = (res) => {
-  //   if (res) {
-  //     data.map((_x) => {
-  //       if (res.profileObj.email == _x.username) {
-  //         console.log(_x.userType);
-  //         if (_x.userType == 1) {
-  //           navigate("/admin")
-  //         }
-  //         if (_x.userType == 2) {
-  //           navigate("/home")
-  //         }
-  //       };
-  //     });
-  //     callMsGraph(res.accessToken).then((result) => {
-  //       console.log('Login Success: currentUser:', result);
+  const onSuccess = (res) => {
+    if (res) {
+      data.map((_x) => {
+        if (res.profileObj.email == _x.username) {
+          console.log(_x.userType);
+          if (_x.userType == 1) {
+            navigate("/admin")
+          }
+          if (_x.userType == 2) {
+            navigate("/home")
+          }
+        };
+      });
+      // callMsGraph(res.accessToken).then((result) => {
+      //   console.log('Login Success: currentUser:', result);
 
-  //     });
-  //   }
-  // };
+      // });
+    }
+  };
 
   const onFailure = (res) => {
     console.log('Login failed: res:', res);
   };
 
   const { signIn } = useGoogleLogin({
-    // onSuccess,
+    onSuccess,
     onFailure,
     clientId,
     isSignedIn: true,
