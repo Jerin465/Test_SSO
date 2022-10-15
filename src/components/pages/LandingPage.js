@@ -82,7 +82,7 @@ export default function LandingPage() {
                 if (_x.userType == 2) {
                   navigate("/home")
                 }
-                if (_x.userType == 2) {
+                if (_x.userType == 1) {
                   navigate("/admin")
                 }
               };
